@@ -8,5 +8,6 @@ public class CodeRequestEntity {
     private String languageType;
     private String codeToRun;
     private Integer userId;
+    private Integer questionId;
 
 }
