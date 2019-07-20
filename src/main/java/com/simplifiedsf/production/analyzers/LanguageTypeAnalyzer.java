@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class  LanguageTypeAnalyzer {
     @Autowired
         ApplicationContext  applicationContext;
-      public LanguageProcessor getLanguageTypeBean(int languageType){
+      public LanguageProcessor getLanguageTypeBean(String languageType){
           LanguageProcessorType languageProcessorType = LanguageProcessorType.getLanguageType(languageType);
           return    applicationContext.getBean(languageProcessorType.getBeanName(), LanguageProcessor.class);
 

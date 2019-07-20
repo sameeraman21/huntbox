@@ -7,26 +7,26 @@ import javax.persistence.criteria.CriteriaBuilder;
 
 public enum LanguageProcessorType {
 
-    DEDUCTION_SUCCESSFUL("javaLanguageProcessor", 1),
-    DEREGISTRATION("pythonLanguageProcessor", 2),
-    GRACE_PERIOD("cLanguageProcessor", 3),
-    INVALID_EVENT("ex", -1);
+    DEDUCTION_SUCCESSFUL("javaLanguageProcessor", "java"),
+    DEREGISTRATION("pythonLanguageProcessor", "python"),
+    GRACE_PERIOD("gccLanguageProcessor", "c"),
+    INVALID_EVENT("ex", "No processor");
 
     @Getter
-    private Integer typeId;
+    private String typeId;
     @Getter
     private String beanName;
 
-    LanguageProcessorType(String beanName, int typeId){
+    LanguageProcessorType(String beanName, String typeId){
         this.beanName = beanName;
         this.typeId = typeId;
     }
 
 
 
-    public static LanguageProcessorType getLanguageType(Integer typeId) {
+    public static LanguageProcessorType getLanguageType(String typeId) {
         for (LanguageProcessorType languageType : values()) {
-            if (languageType.getTypeId() == typeId) {
+            if (languageType.getTypeId().equals(typeId)) {
                 return languageType;
             }
         }
