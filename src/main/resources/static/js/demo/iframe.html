@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ACE Editor Inside iframe</title>
+   <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <style type="text/css" media="screen">
+     body, html { 
+        height: 100%;
+        margin:0; padding:0;
+        background: #f3f3f3;
+    }    
+    #editor { 
+        padding: 20px; margin: 0 auto;
+        width: 100%; height: 500px;
+    }
+    .editor-header {
+    background: #f8f8f8;
+    border: 1px solid #d9deea;
+    border-left: 0;
+    border-right: 0;
+    height: 60px;
+    line-height: 30px;
+    padding: 7px 20px;
+    width:100%;
+    margin:0 auto;
+    margin-top: 30px;
+}
+.editor-footer {
+    background: #f8f8f8;
+    border: 1px solid #d9deea;
+    border-left: 0;
+    border-right: 0;
+    height: 60px;
+    line-height: 30px;
+    padding: 7px 20px;
+    width:100%;
+    margin:0 auto;
+}
+  .editor-title {
+      float: left;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+      color: #46535e;
+  }
+  .language-selector{
+    float: right;
+    width: 50%;
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+      <div class="row">
+        <div class="editor-header">
+          <div class="editor-title">
+              CODE EDITOR
+          </div>
+          <div class="language-selector"> 
+              <div class="form-group">
+                  <label for="sel1">Select Language:</label>
+                  <select class="form-control" id="select-language" style="width:30%;display:inline-flex;">
+                    <option value="c_cpp">cpp</option>
+                    <option value=java>java 8</option>
+                    <option value="java">java</option>
+                    <option value="php">php</option>
+                    <option value="python">python</option>
+                    <option value="javascript">javascript</option>
+                    <option value="scala">scala</option>
+                    <option value="c_cpp">c</option>
+                  </select>
+                </div>
+          </div>
+        </div>
+          <pre id="editor" >
+          </pre>
+          <div class="editor-footer">
+              <button type="button" class="btn btn-primary" id="compile">Compile and test</button>
+              <button type="button" class="btn btn-success">Submit</button>
+          </div>
+      </div>
+  </div>    
+   
+    
+    <script src="../src-noconflict/ace.js"></script>
+    <script>
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.session.setMode("ace/mode/c_cpp");
+        editor.setFontSize(16);
+        $("#compile").click(function(){
+          var editor = ace.edit("editor");
+          console.log(editor.getValue());
+        });
+          $("#select-language").change(function() {
+            var editor = ace.edit("editor");
+            var lang = $(this).val();
+            var temp='ace/mode/'+lang;
+            editor.session.setMode(temp);
+          //console.log(lang+'ganesh');
+        });
+    </script>
+</html>
