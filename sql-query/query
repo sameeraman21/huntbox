@@ -1,4 +1,4 @@
-CREATE TABLE `user` (
+CREATE TABLE `users` (
 	`user_id` INT(40) NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(30),
 	`email_id` VARCHAR(60),
@@ -29,4 +29,59 @@ CREATE TABLE `merchant_link` (
 	KEY `link` (`link`) USING HASH,
 KEY `user_id` (`user_id`) USING BTREE,
 	PRIMARY KEY (`merchant_link_id`)
+);
+
+CREATE TABLE `questions` (
+	`question_id` INT(30) NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(300),
+	`topic_id` INT(30),
+	`weight` VARCHAR(20),
+	`created_by` VARCHAR(20),
+	`created_at` DATETIME(60),
+	`updated_by` VARCHAR(20),
+	`updated_at` DATETIME(60),
+KEY `topic_id` (`topic_id`) USING BTREE,
+KEY `title` (`title`) USING HASH,
+PRIMARY KEY (`question_id`)
+);
+
+CREATE TABLE `topics` (
+	`topic_id` INT(30) NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(100),
+	`video_link` VARCHAR(300),
+	`created_by` VARCHAR(20),
+	`created_at` DATETIME(60),
+	`updated_by` VARCHAR(20),
+	`updated_at` DATETIME(60),
+KEY `title` (`title`) USING HASH,
+PRIMARY KEY (`topic_id`)
+);
+
+CREATE TABLE `options` (
+	`option_id` VARCHAR(20),
+	`question_id` VARCHAR(20),
+	`title` VARCHAR(120),
+	`value` VARCHAR(10),
+	`created_by` VARCHAR(20),
+	`created_at` DATETIME(60),
+	`updated_by` VARCHAR(20),
+	`updated_at` DATETIME(60),
+	KEY `title` (`title`) USING BTREE,
+KEY `question_id` (`question_id`) USING BTREE,
+PRIMARY KEY (`option_id`)
+);
+
+CREATE TABLE `results` (
+	`result_id` VARCHAR(20),
+	`user_id` VARCHAR(20),
+	`question_id` VARCHAR(20),
+	`level` MEDIUMINT,
+	`marks` VARCHAR(10),
+	`created_by` VARCHAR(20),
+	`created_at` DATETIME(60),
+	`updated_by` VARCHAR(20),
+	`updated_at` DATETIME(60),
+KEY `user_id` (`user_id`) USING BTREE,
+KEY `question_id` (`question_id`) USING BTREE,
+PRIMARY KEY (`result_id`)
 );
