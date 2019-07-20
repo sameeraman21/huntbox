@@ -21,6 +21,7 @@ CREATE TABLE `merchant_link` (
 	`user_id` INT(30),
 	`link` VARCHAR(300),
 	`is_active` BOOLEAN,
+	`expiry_hour` FLOAT,
 	`created_at` DATETIME,
 	`created_by` INT(30),
 	`updated_at` DATETIME,
