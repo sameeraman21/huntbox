@@ -18,7 +18,6 @@ CREATE TABLE `roles` (
 
 CREATE TABLE `merchant_link` (
 	`merchant_link_id` INT(30) NOT NULL AUTO_INCREMENT,
-	`user_id` INT(30),
 	`link` VARCHAR(300),
 	`is_active` BOOLEAN,
 	`expiry_hour` FLOAT,
@@ -27,60 +26,59 @@ CREATE TABLE `merchant_link` (
 	`updated_at` DATETIME,
 	`updated_by` INT(30),
 	KEY `link` (`link`) USING HASH,
-KEY `user_id` (`user_id`) USING BTREE,
 	PRIMARY KEY (`merchant_link_id`)
 );
 
 CREATE TABLE `questions` (
-	`question_id` INT(30) NOT NULL AUTO_INCREMENT,
+	`question_id` INT(40) NOT NULL AUTO_INCREMENT,
 	`title` VARCHAR(300),
-	`topic_id` INT(30),
+	`topic_id` INT(40),
 	`weight` VARCHAR(20),
 	`created_by` VARCHAR(20),
-	`created_at` DATETIME(60),
+	`created_at` DATETIME,
 	`updated_by` VARCHAR(20),
-	`updated_at` DATETIME(60),
+	`updated_at` DATETIME,
 KEY `topic_id` (`topic_id`) USING BTREE,
 KEY `title` (`title`) USING HASH,
 PRIMARY KEY (`question_id`)
 );
 
 CREATE TABLE `topics` (
-	`topic_id` INT(30) NOT NULL AUTO_INCREMENT,
+	`topic_id` INT(40) NOT NULL AUTO_INCREMENT,
 	`title` VARCHAR(100),
 	`video_link` VARCHAR(300),
 	`created_by` VARCHAR(20),
-	`created_at` DATETIME(60),
+	`created_at` DATETIME,
 	`updated_by` VARCHAR(20),
-	`updated_at` DATETIME(60),
+	`updated_at` DATETIME,
 KEY `title` (`title`) USING HASH,
 PRIMARY KEY (`topic_id`)
 );
 
 CREATE TABLE `options` (
-	`option_id` VARCHAR(20),
-	`question_id` VARCHAR(20),
+	`option_id` INT(40),
+	`question_id` INT(40),
 	`title` VARCHAR(120),
 	`value` VARCHAR(10),
 	`created_by` VARCHAR(20),
-	`created_at` DATETIME(60),
+	`created_at` DATETIME,
 	`updated_by` VARCHAR(20),
-	`updated_at` DATETIME(60),
+	`updated_at` DATETIME,
 	KEY `title` (`title`) USING BTREE,
 KEY `question_id` (`question_id`) USING BTREE,
 PRIMARY KEY (`option_id`)
 );
 
 CREATE TABLE `results` (
-	`result_id` VARCHAR(20),
-	`user_id` VARCHAR(20),
-	`question_id` VARCHAR(20),
+	`result_id` INT(40),
+	`user_id` INT(40),
+	`question_id` INT(40),
 	`level` MEDIUMINT,
 	`marks` VARCHAR(10),
 	`created_by` VARCHAR(20),
-	`created_at` DATETIME(60),
+	`created_at` DATETIME,
 	`updated_by` VARCHAR(20),
-	`updated_at` DATETIME(60),
+	`updated_at` DATETIME,
 KEY `user_id` (`user_id`) USING BTREE,
 KEY `question_id` (`question_id`) USING BTREE,
 PRIMARY KEY (`result_id`)
