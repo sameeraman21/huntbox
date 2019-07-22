@@ -3,8 +3,6 @@ package com.simplifiedsf.production.services;
 import com.simplifiedsf.production.Processors.LanguageProcessor;
 import com.simplifiedsf.production.analyzers.LanguageTypeAnalyzer;
 import com.simplifiedsf.production.entities.CodeRequestEntity;
-import com.simplifiedsf.production.enums.LanguageProcessorType;
-import com.simplifiedsf.production.enums.LanguageType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

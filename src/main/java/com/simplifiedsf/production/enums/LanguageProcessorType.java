@@ -7,9 +7,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 
 public enum LanguageProcessorType {
 
-    DEDUCTION_SUCCESSFUL("javaLanguageProcessor", "java"),
-    DEREGISTRATION("pythonLanguageProcessor", "python"),
-    GRACE_PERIOD("gccLanguageProcessor", "c"),
+    JAVA_LANGUAGE("javaLanguageProcessor", "java"),
+    PYTHON_LANGUAGE("pythonLanguageProcessor", "python"),
+    GCC("gccLanguageProcessor", "c"),
     INVALID_EVENT("ex", "No processor");
 
     @Getter
